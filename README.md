@@ -15,6 +15,5 @@ Base : `https://t0b0i7.github.io/animations/<dossier>/`
 | Toile d'Hiver | `toile-d-hiver/` | [voir](https://t0b0i7.github.io/animations/toile-d-hiver/) |
 | Anniversaries Animation | `anniversaries-animation/` | [voir](https://t0b0i7.github.io/animations/anniversaries-animation/) |
 | Peace Bloodness HBD | `peace-bloodness-hbd/` | [voir](https://t0b0i7.github.io/animations/peace-bloodness-hbd/) |
-| Ursule Sowolabi HBD | `ursule-sowolabi-hbd/` | [voir](https://t0b0i7.github.io/animations/ursule-sowolabi-hbd/) |
 
 Source migrée de : Mes_animations, Christmas-Tree-3D, Challenge_saint_valentin-2026, -toile-d-Hiver, Anniversaries_Animation, hbd-Pr-cieuse-1, gicoth-galaxy-celebration-hbd, peace-bloodness-hbd, ursulesowolabi-hbd
