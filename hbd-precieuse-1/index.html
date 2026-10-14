@@ -1,1 +1,818 @@
-﻿<!DOCTYPE html><html lang='fr'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>hbd-precieuse-1</title><style>body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0f0c29;color:#fff;font-family:sans-serif;text-align:center;padding:20px}a{color:#ff69b4}</style></head><body><h1>hbd-precieuse-1</h1><p>Animation en cours de migration depuis le repo d'origine.</p><p><a href='../'>Retour galerie</a></p></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Éclat d'Âme – Pour Précieuse Empire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gradient: linear-gradient(120deg, #ffb6ea 0%, #ffd700 40%, #a084ee 100%);
+      --bg-dark: #18122B;
+      --star-color: #fffbe6;
+      --gold: #ffd700;
+      --rose: #ffb6ea;
+      --violet: #a084ee;
+      --shadow: 0 0 32px 8px #a084ee44;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at 60% 40%, #2d1b4d 0%, #18122B 100%);
+      overflow-x: hidden;
+      overflow-y: auto;
+      font-family: 'Poppins', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+    }
+    body {
+      position: relative;
+      min-height: 100vh;
+      z-index: 1;
+    }
+    #galaxy {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem 1rem 1rem;
+    }
+    .intro {
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      letter-spacing: 0.08em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      text-shadow: 0 0 16px #ffd70088, 0 0 32px #a084ee44;
+      opacity: 0;
+      animation: fadeInIntro 2s ease forwards;
+      animation-delay: 0.5s;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .intro .sparkle {
+      font-size: 1.2em;
+      animation: sparkle 1.5s infinite alternate;
+    }
+    @keyframes fadeInIntro {
+      to { opacity: 1; }
+    }
+    @keyframes sparkle {
+      0% { filter: brightness(1.2) drop-shadow(0 0 8px #ffd700); }
+      100% { filter: brightness(2) drop-shadow(0 0 24px #ffd700); }
+    }
+    .subtitle {
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      color: #ffd700cc;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      opacity: 0;
+      animation: fadeInIntro 2s 1.5s forwards;
+    }
+    .actions {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .precieuse-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--gold);
+      box-shadow: var(--shadow);
+      margin: 2rem 0;
+      animation: fadeInIntro 2s ease forwards;
+    }
+    
+    button {
+      background: var(--gradient);
+      color: #18122B;
+      border: none;
+      border-radius: 2em;
+      padding: 0.9em 2em;
+      font-size: 1.1rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 16px #a084ee44;
+      transition: transform 0.15s, box-shadow 0.15s;
+      outline: none;
+      margin-bottom: 0.5em;
+    }
+    button:hover, button:focus {
+      transform: scale(1.06);
+      box-shadow: 0 4px 32px #ffd70055;
+    }
+    .music-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      gap: 1em;
+      width: 100%;
+      max-width: 400px;
+    }
+    .playlist-controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .playlist-btn {
+      background: var(--gradient);
+      border: none;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .playlist-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px var(--gold);
+    }
+    .now-playing {
+      color: var(--gold);
+      font-size: 0.9rem;
+      text-align: center;
+      min-height: 1.2em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px var(--violet);
+    }
+    #audioPlayer {
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(160, 132, 238, 0.2);
+    }
+    audio {
+      width: 220px;
+      margin-top: 0.5em;
+      outline: none;
+      border-radius: 1em;
+      background: #fff1;
+      box-shadow: 0 2px 12px #a084ee33;
+    }
+    .message-section {
+      max-width: 540px;
+      margin: 0 auto 2.5rem auto;
+      background: #fff1;
+      border-radius: 1.5em;
+      box-shadow: var(--shadow);
+      padding: 2.2em 1.5em 1.5em 1.5em;
+      position: relative;
+      min-height: 120px;
+      font-size: 1.18rem;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.7s;
+    }
+    .message-section.visible {
+      opacity: 1;
+    }
+    .typewriter {
+      display: inline-block;
+      border-right: 2px solid #ffd700;
+      white-space: pre-wrap;
+      min-height: 2em;
+      font-family: inherit;
+      font-size: inherit;
+      animation: blink-caret 0.8s step-end infinite;
+    }
+    @keyframes blink-caret {
+      0%, 100% { border-color: #ffd700; }
+      50% { border-color: transparent; }
+    }
+    .signature {
+      margin-top: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #ffd700;
+      text-align: center;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      animation: fadeInIntro 2s 3.5s forwards;
+      text-shadow: 0 0 8px #ffd70055;
+    }
+    /* Responsive Design Amélioré */
+    @media (max-width: 768px) {
+      .intro { font-size: 2.4rem; }
+      .message-section { font-size: 1.1rem; padding: 1.8em 1.2em 1.5em 1.2em; }
+      .signature { font-size: 1.2rem; }
+      .container { padding: 1.5rem 1rem; }
+      button { 
+        padding: 1em 2.2em;
+        font-size: 1.15rem;
+        width: 100%;
+        max-width: 280px;
+      }
+      .actions { 
+        width: 100%;
+        padding: 0 1rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .intro { font-size: 2rem; }
+      .message-section { 
+        font-size: 1rem; 
+        padding: 1.2em 0.7em 1em 0.7em;
+        margin: 0 0.8rem 2rem 0.8rem;
+      }
+      .signature { font-size: 1.05rem; }
+      audio { 
+        width: calc(100% - 2rem);
+        margin: 0.5em 1rem;
+      }
+      .music-section {
+        width: 100%;
+        padding: 0 1rem;
+      }
+      .container {
+        padding: 1rem 0;
+      }
+      html, body {
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+      button {
+        margin-bottom: 1rem;
+      }
+    }
+    /* Touch Device Optimizations */
+    @media (hover: none) {
+      button:active {
+        transform: scale(0.98);
+        background: linear-gradient(120deg, #ffc4f1 0%, #ffe252 40%, #b49af3 100%);
+      }
+      .music-label {
+        padding: 0.8em 1.5em;
+      }
+      audio::-webkit-media-controls-panel {
+        padding: 0.5em;
+      }
+    }
+
+    /* Polaroid Carousel Styles */
+    .polaroid-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      margin: 2rem auto;
+      perspective: 1000px;
+      touch-action: pan-y pinch-zoom;
+    }
+
+    .polaroid-container {
+      width: 100%;
+      height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .polaroid {
+      background: #fff;
+      padding: 15px 15px 60px 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      transform: rotate(-2deg) scale(0.8) translateX(100%);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 300px;
+      position: absolute;
+      opacity: 0;
+      cursor: grab;
+    }
+
+    .polaroid:active {
+      cursor: grabbing;
+    }
+
+    .polaroid.active {
+      opacity: 1;
+      transform: rotate(-2deg) scale(1) translateX(0);
+      z-index: 2;
+    }
+
+    .polaroid.prev {
+      transform: rotate(-2deg) scale(0.8) translateX(-100%);
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    .polaroid.next {
+      transform: rotate(-2deg) scale(0.8) translateX(100%);
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    .polaroid-content {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .polaroid-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .polaroid:hover .polaroid-content img {
+      transform: scale(1.05);
+    }
+
+    .polaroid-caption {
+      text-align: center;
+      margin-top: 15px;
+      font-family: 'Playfair Display', serif;
+      color: #333;
+      font-size: 1.1rem;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: var(--gold);
+      transform: scale(1.2);
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--gradient);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--bg-dark);
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-btn.prev {
+      left: -20px;
+    }
+
+    .carousel-btn.next {
+      right: -20px;
+    }
+
+    .carousel-btn:hover {
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 15px var(--gold);
+    }
+
+    @media (max-width: 480px) {
+      .polaroid {
+        width: 260px;
+      }
+      .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+      .carousel-btn.prev { left: -10px; }
+      .carousel-btn.next { right: -10px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="galaxy"></canvas>
+  <div class="container">
+    <div class="intro">
+      <span id="preciousName"></span>
+      <span class="sparkle">✨</span>
+    </div>
+    <img src="img/precieuse-baby.jpg" alt="Photo de Précieuse bébé" class="precieuse-photo">
+    <div class="subtitle">Éclat d'Âme – Pour Précieuse Empire</div>
+    <div class="actions">
+      <button id="playMusicBtn">Lire la chanson 💖</button>
+      <button id="showMessageBtn">Lire le message ✍️</button>
+    </div>
+    <div class="music-section">
+      <div class="playlist-controls">
+        <button id="prevSongBtn" class="playlist-btn">⏮️</button>
+        <button id="playPauseBtn" class="playlist-btn">▶️</button>
+        <button id="nextSongBtn" class="playlist-btn">⏭️</button>
+      </div>
+      <div class="now-playing">
+        <span id="currentSongName">Chanson 1</span>
+      </div>
+      <audio id="audioPlayer" controls></audio>
+    </div>
+    <div class="message-section" id="messageSection">
+      <span class="typewriter" id="typewriter"></span>
+    </div>
+    
+    <!-- Carrousel Polaroid -->
+    <div class="polaroid-carousel">
+      <div class="polaroid-container" id="polaroidContainer">
+        <div class="polaroid active" data-index="0">
+          <div class="polaroid-content">
+            <img src="img/P1 (1).jpg" alt="Précieuse" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Élégance naturelle ✨</div>
+        </div>
+        <div class="polaroid" data-index="1">
+          <div class="polaroid-content">
+            <img src="img/P1 (2).jpg" alt="Précieuse" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Rayonnante de joie ⭐</div>
+        </div>
+        <div class="polaroid" data-index="2">
+          <div class="polaroid-content">
+            <img src="img/P1 (3).jpg" alt="Précieuse" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Un sourire qui illumine 💫</div>
+        </div>
+        <div class="polaroid" data-index="3">
+          <div class="polaroid-content">
+            <img src="img/P1 (4).jpg" alt="Précieuse" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Force et grâce �</div>
+        </div>
+        <div class="polaroid" data-index="4">
+          <div class="polaroid-content">
+            <img src="img/P1 (5).jpg" alt="Précieuse" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Charisme naturel ✨</div>
+        </div>
+        <div class="polaroid" data-index="5">
+          <div class="polaroid-content">
+            <img src="img/P1 (6).jpg" alt="Précieuse" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Beauté radieuse 💎</div>
+        </div>
+        <div class="polaroid" data-index="6">
+          <div class="polaroid-content">
+            <img src="img/P1 (7).jpg" alt="Précieuse" loading="lazy">
+          </div>
+          <div class="polaroid-caption">L'essence même de la grâce ✨</div>
+        </div>
+        <div class="polaroid" data-index="7">
+          <div class="polaroid-content">
+            <img src="img/P1 (8).jpg" alt="Précieuse" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Une âme lumineuse 🌟</div>
+        </div>
+        <div class="polaroid" data-index="8">
+          <div class="polaroid-content">
+            <img src="img/P1 (9).jpg" alt="Précieuse" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Précieuse , tout simplement 💖</div>
+        </div>
+      </div>
+      <button class="carousel-btn prev">❮</button>
+      <button class="carousel-btn next">❯</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <div class="signature">De la part de ton BITO 💎</div>
+  </div>
+  <script>
+    // Protection contre l'accès au code source
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      // Désactiver Ctrl+U (voir source)
+      if (e.ctrlKey && e.key === 'u') e.preventDefault();
+      // Désactiver Ctrl+Shift+I ou F12 (outils développeur)
+      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault();
+      // Désactiver Ctrl+Shift+C (inspecteur)
+      if (e.ctrlKey && e.shiftKey && e.key === 'C') e.preventDefault();
+      // Désactiver Ctrl+S (enregistrer)
+      if (e.ctrlKey && e.key === 's') e.preventDefault();
+    });
+    
+    // Désactiver la sélection de texte
+    document.addEventListener('selectstart', e => e.preventDefault());
+
+    // Animation d'apparition du prénom "Précieuse"
+    const preciousName = "Précieuse";
+    const preciousNameEl = document.getElementById('preciousName');
+    function animateName(name, el) {
+      el.innerHTML = "";
+      for (let i = 0; i < name.length; i++) {
+        const span = document.createElement('span');
+        span.textContent = name[i];
+        span.style.opacity = 0;
+        span.style.transition = `opacity 0.4s ${i * 0.08 + 0.2}s`;
+        el.appendChild(span);
+      }
+      setTimeout(() => {
+        Array.from(el.children).forEach((span, i) => {
+          setTimeout(() => { span.style.opacity = 1; }, i * 80 + 200);
+        });
+      }, 100);
+    }
+    animateName(preciousName, preciousNameEl);
+
+    // Effet galaxie vivante (particules/étoiles)
+    const canvas = document.getElementById('galaxy');
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth, h = window.innerHeight;
+    let stars = [];
+    function resizeGalaxy() {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
+    }
+    window.addEventListener('resize', resizeGalaxy);
+    function createStars() {
+      stars = [];
+      const starCount = Math.floor(w * h / 1200);
+      for (let i = 0; i < starCount; i++) {
+        stars.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: Math.random() * 1.2 + 0.3,
+          speed: Math.random() * 0.08 + 0.02,
+          alpha: Math.random() * 0.7 + 0.3,
+          twinkle: Math.random() * Math.PI * 2
+        });
+      }
+    }
+    function drawGalaxy() {
+      ctx.clearRect(0, 0, w, h);
+      for (let star of stars) {
+        ctx.save();
+        ctx.globalAlpha = star.alpha * (0.7 + 0.3 * Math.sin(Date.now()/900 + star.twinkle));
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
+        ctx.fillStyle = Math.random() > 0.5 ? "#ffd700" : "#fffbe6";
+        ctx.shadowColor = "#ffd700";
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.restore();
+        // Mouvement lent
+        star.x += Math.sin(star.twinkle) * star.speed;
+        star.y += Math.cos(star.twinkle) * star.speed * 0.7;
+        // Parallaxe douce
+        if (star.x > w) star.x = 0;
+        if (star.x < 0) star.x = w;
+        if (star.y > h) star.y = 0;
+        if (star.y < 0) star.y = h;
+      }
+      requestAnimationFrame(drawGalaxy);
+    }
+    resizeGalaxy();
+    createStars();
+    drawGalaxy();
+    window.addEventListener('resize', () => {
+      resizeGalaxy();
+      createStars();
+    });
+
+    // Effet machine à écrire pour le message
+    const message = `Joyeux anniversaire, Précieuse ✨
+
+À une femme dont la lumière illumine chaque univers qu'elle traverse.
+Ta force, ta beauté, ton intelligence et ton audace inspirent et élèvent tous ceux qui croisent ta route.
+Tu es l’incarnation de la résilience, de la passion et de la grâce.
+Merci d’être ce soleil, ce mystère, cette étoile rare qui fait vibrer le monde autour d’elle.
+
+Que cette nouvelle année t’apporte autant de bonheur, de succès et d’amour que tu en sèmes autour de toi.
+
+Avec toute mon admiration et mon amour.`;
+    const typewriterEl = document.getElementById('typewriter');
+    const messageSection = document.getElementById('messageSection');
+    let typing = false;
+    function typeWriterEffect(text, el, speed = 32) {
+      el.textContent = "";
+      let i = 0;
+      typing = true;
+      function type() {
+        if (i <= text.length) {
+          el.textContent = text.slice(0, i);
+          i++;
+          setTimeout(type, text[i-1] === "\n" ? speed*8 : speed);
+        } else {
+          typing = false;
+        }
+      }
+      type();
+    }
+    document.getElementById('showMessageBtn').addEventListener('click', () => {
+      if (!messageSection.classList.contains('visible')) {
+        messageSection.classList.add('visible');
+        typeWriterEffect(message, typewriterEl, 28);
+      } else if (!typing) {
+        // Relancer l'effet si déjà affiché
+        typeWriterEffect(message, typewriterEl, 28);
+      }
+    });
+
+    // Playlist et contrôles musicaux
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const prevSongBtn = document.getElementById('prevSongBtn');
+    const nextSongBtn = document.getElementById('nextSongBtn');
+    const currentSongName = document.getElementById('currentSongName');
+
+    const playlist = [
+      { name: "Chanson 1", path: "song/song1 (1).mp3" },
+      { name: "Chanson 2", path: "song/song1 (2).mp3" }
+    ];
+    let currentTrack = 0;
+
+    function loadAndPlayTrack(index) {
+      currentTrack = index;
+      const song = playlist[currentTrack];
+      audioPlayer.src = song.path;
+      currentSongName.textContent = song.name;
+      audioPlayer.play().catch(e => console.log('Lecture automatique impossible:', e));
+      updatePlayPauseButton();
+    }
+
+    function updatePlayPauseButton() {
+      playPauseBtn.textContent = audioPlayer.paused ? "▶️" : "⏸️";
+    }
+
+    playPauseBtn.addEventListener('click', () => {
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+      } else {
+        audioPlayer.pause();
+      }
+      updatePlayPauseButton();
+    });
+
+    nextSongBtn.addEventListener('click', () => {
+      loadAndPlayTrack((currentTrack + 1) % playlist.length);
+    });
+
+    prevSongBtn.addEventListener('click', () => {
+      loadAndPlayTrack((currentTrack - 1 + playlist.length) % playlist.length);
+    });
+
+    audioPlayer.addEventListener('ended', () => {
+      loadAndPlayTrack((currentTrack + 1) % playlist.length);
+    });
+
+    audioPlayer.addEventListener('play', updatePlayPauseButton);
+    audioPlayer.addEventListener('pause', updatePlayPauseButton);
+
+    document.getElementById('playMusicBtn').addEventListener('click', () => {
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+      }
+      audioPlayer.scrollIntoView({behavior: "smooth", block: "center"});
+    });
+
+    // Charger la première chanson
+    loadAndPlayTrack(0);
+
+    // Carrousel avec support tactile
+    const carousel = document.querySelector('.polaroid-carousel');
+    const container = document.getElementById('polaroidContainer');
+    const slides = document.querySelectorAll('.polaroid');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    let currentIndex = 0;
+    let startX, moveX;
+    let isMoving = false;
+
+    // Créer les points de navigation
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = `dot ${index === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    function updateSlides() {
+      slides.forEach((slide, index) => {
+        slide.className = 'polaroid';
+        if (index === currentIndex) {
+          slide.classList.add('active');
+        } else if (index === currentIndex - 1 || (currentIndex === 0 && index === slides.length - 1)) {
+          slide.classList.add('prev');
+        } else if (index === currentIndex + 1 || (currentIndex === slides.length - 1 && index === 0)) {
+          slide.classList.add('next');
+        }
+      });
+
+      // Mettre à jour les points
+      document.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      updateSlides();
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlides();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateSlides();
+    }
+
+    // Gestionnaires d'événements tactiles
+    carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isMoving = true;
+      carousel.style.transition = 'none';
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+      if (!isMoving) return;
+      moveX = e.touches[0].clientX;
+      const diff = moveX - startX;
+      if (Math.abs(diff) > 30) {
+        e.preventDefault();
+      }
+    });
+
+    carousel.addEventListener('touchend', (e) => {
+      if (!isMoving) return;
+      const diff = moveX - startX;
+      if (diff > 50) {
+        prevSlide();
+      } else if (diff < -50) {
+        nextSlide();
+      }
+      isMoving = false;
+    });
+
+    // Boutons de navigation
+    document.querySelector('.carousel-btn.prev').addEventListener('click', prevSlide);
+    document.querySelector('.carousel-btn.next').addEventListener('click', nextSlide);
+
+    // Animation automatique toutes les 5 secondes
+    setInterval(nextSlide, 5000);
+
+    // Initialisation
+    updateSlides();
+
+    // Apparition douce de la signature
+    setTimeout(() => {
+      document.querySelector('.signature').style.opacity = 1;
+    }, 3500);
+  </script>
+</body>
+</html>
