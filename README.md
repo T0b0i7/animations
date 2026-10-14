@@ -14,8 +14,6 @@ Base : `https://t0b0i7.github.io/animations/<dossier>/`
 | Saint Valentin 2026 | `saint-valentin-2026/` | [voir](https://t0b0i7.github.io/animations/saint-valentin-2026/) |
 | Toile d'Hiver | `toile-d-hiver/` | [voir](https://t0b0i7.github.io/animations/toile-d-hiver/) |
 | Anniversaries Animation | `anniversaries-animation/` | [voir](https://t0b0i7.github.io/animations/anniversaries-animation/) |
-| HBD Précieuse 1 | `hbd-precieuse-1/` | [voir](https://t0b0i7.github.io/animations/hbd-precieuse-1/) |
-| Gicoth Galaxy HBD | `gicoth-galaxy-hbd/` | [voir](https://t0b0i7.github.io/animations/gicoth-galaxy-hbd/) |
 | Peace Bloodness HBD | `peace-bloodness-hbd/` | [voir](https://t0b0i7.github.io/animations/peace-bloodness-hbd/) |
 | Ursule Sowolabi HBD | `ursule-sowolabi-hbd/` | [voir](https://t0b0i7.github.io/animations/ursule-sowolabi-hbd/) |
 
