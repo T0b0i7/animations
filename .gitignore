@@ -1,0 +1,21 @@
+# Dépendances
+node_modules/
+.pnpm-store/
+
+# Builds
+dist/
+.vite/
+
+# Logs / OS
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+
+# Environnement
+.env
+.env.*

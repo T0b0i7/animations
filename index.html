@@ -1,30 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨ Mes Animations</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Animations — galerie</title>
+<meta name="description" content="Galerie d'animations web : carrousels 3D, formulaires animés, pages 404, cartes d'anniversaire." />
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:'Segoe UI',system-ui,sans-serif;background:#0f0c29;color:#fff;min-height:100vh}
-header{text-align:center;padding:48px 20px 10px}h1{margin:0;font-size:clamp(28px,5vw,52px);background:linear-gradient(90deg,#ff69b4,#ffd166,#64ffda);-webkit-background-clip:text;background-clip:text;color:transparent}
-p.sub{opacity:.7}main{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;padding:30px;max-width:1100px;margin:0 auto}
-.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;text-decoration:none;color:#fff;transition:.25s;display:block}
-.card:hover{transform:translateY(-4px);border-color:#ff69b4;background:rgba(255,105,180,.1)}
-.card span{font-size:32px}.card h2{margin:10px 0 6px;font-size:18px}.card small{opacity:.6}
-footer{text-align:center;padding:20px;opacity:.5;font-size:13px}
+  :root{
+    --bg:#08080c;
+    --card:#12121a;
+    --line:#23232f;
+    --txt:#f2f2f7;
+    --muted:#8a8a9a;
+    --accent:#7c5cff;
+    --accent2:#22d3ee;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--txt);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+  }
+  body::before,body::after{
+    content:"";position:fixed;border-radius:50%;filter:blur(120px);opacity:.35;pointer-events:none;z-index:0;
+  }
+  body::before{width:520px;height:520px;background:var(--accent);top:-220px;left:-140px}
+  body::after{width:460px;height:460px;background:var(--accent2);bottom:-220px;right:-120px;opacity:.22}
+
+  header{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:72px 24px 28px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    border:1px solid var(--line);background:#101018cc;padding:7px 12px;border-radius:999px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent2)}
+  h1{
+    font-size:clamp(34px,6vw,62px);line-height:1.02;margin:18px 0 10px;letter-spacing:-.03em;font-weight:800;
+    background:linear-gradient(100deg,#fff 15%,#c9c3ff 55%,#7fe9f7 95%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  header p{margin:0;color:var(--muted);max-width:56ch;font-size:15px;line-height:1.6}
+
+  main{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:8px 24px 96px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+
+  .card{
+    background:linear-gradient(180deg,#13131c,#0d0d13);
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s;
+  }
+  .card:hover{transform:translateY(-4px);border-color:#3a3a52;box-shadow:0 18px 46px -18px #7c5cff55}
+
+  .frame{
+    position:relative;aspect-ratio:16/10;background:#05050a;overflow:hidden;border-bottom:1px solid var(--line);
+  }
+  .frame iframe{
+    position:absolute;top:0;left:0;
+    width:200%;height:200%;
+    transform:scale(.5);transform-origin:0 0;
+    border:0;pointer-events:none;background:#05050a;
+  }
+  .frame::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,#0d0d13 100%);pointer-events:none;
+  }
+
+  .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .head h2{font-size:16px;margin:0;letter-spacing:-.01em;font-weight:650}
+  .slug{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--muted);white-space:nowrap}
+  .desc{margin:0;color:var(--muted);font-size:13px;line-height:1.55;flex:1}
+
+  .actions{display:flex;gap:8px;align-items:center}
+  a.btn,button.btn{
+    appearance:none;border:1px solid var(--line);background:#191924;color:var(--txt);
+    font:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:10px;cursor:pointer;
+    text-decoration:none;display:inline-flex;align-items:center;gap:7px;
+    transition:background .2s,border-color .2s,transform .2s;
+  }
+  a.btn:hover,button.btn:hover{background:#22222f;border-color:#3a3a52}
+  a.btn.primary{background:linear-gradient(100deg,var(--accent),#5b8cff);border-color:transparent}
+  a.btn.primary:hover{filter:brightness(1.08)}
+  button.btn.copied{color:#6ef2b0;border-color:#2a6b4a}
+
+  footer{position:relative;z-index:1;text-align:center;color:var(--muted);font-size:12px;padding:0 24px 48px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-<header><h1>✨ Mes Animations</h1><p class="sub">1 repo • 1 sous-dossier = 1 GitHub Page — https://t0b0i7.github.io/animations/</p></header>
+
+<header>
+  <span class="eyebrow"><span class="dot"></span> Collection · <span id="count">7</span> animations</span>
+  <h1>Animations</h1>
+  <p>Chaque animation a son propre lien de prévisualisation. Ouvre-la en plein écran ou copie son URL pour la partager.</p>
+</header>
+
 <main>
-<a class="card" href="./chaddy-birthday/"><span>🎂</span><h2>Chaddy Birthday</h2><small>/chaddy-birthday/</small></a>
-<a class="card" href="./christmas-tree-3d/"><span>🎄</span><h2>Christmas Tree 3D</h2><small>/christmas-tree-3d/</small></a>
-<a class="card" href="./mes-animations/"><span>🎞️</span><h2>Mes Animations Hub</h2><small>/mes-animations/</small></a>
-<a class="card" href="./saint-valentin-2026/"><span>💘</span><h2>Saint Valentin 2026</h2><small>/saint-valentin-2026/</small></a>
-<a class="card" href="./toile-d-hiver/"><span>❄️</span><h2>Toile d'Hiver</h2><small>/toile-d-hiver/</small></a>
-<a class="card" href="./anniversaries-animation/"><span>🎉</span><h2>Anniversaries</h2><small>/anniversaries-animation/</small></a>
-<a class="card" href="./peace-bloodness-hbd/"><span>🕊️</span><h2>Peace Bloodness HBD</h2><small>/peace-bloodness-hbd/</small></a>
+  <div class="grid" id="grid"></div>
 </main>
-<footer>T0b0i7 • animations • chaque carte = sa propre page</footer>
+
+<footer>T0b0i7 · GitHub Pages</footer>
+
+<script>
+  const animations = [
+    { slug: "3d-animated-carousel", title: "Carrousel 3D", desc: "Carrousel CSS 3D en rotation continue, 12 cartes en perspective." },
+    { slug: "404-page-not-found",  title: "Page 404", desc: "Page d'erreur animée pour les routes introuvables." },
+    { slug: "animated-login-form", title: "Login animé", desc: "Formulaire de connexion avec transitions et focus animés." },
+    { slug: "auth-screens",        title: "Écrans d'authentification", desc: "Sign in / Sign up avec bascule animée entre les deux panneaux." },
+    { slug: "birthday-gift-animation", title: "Cadeau d'anniversaire", desc: "Ouverture de cadeau, ballons et lettres animées." },
+    { slug: "carousel",            title: "Carrousel", desc: "Carrousel d'images avec défilement fluide et contrôles." },
+    { slug: "lamp-login",          title: "Lamp Login", desc: "Interface React + Vite : la lampe s'allume et révèle le formulaire." }
+  ];
+
+  const grid = document.getElementById("grid");
+  document.getElementById("count").textContent = animations.length;
+
+  animations.forEach((a, i) => {
+    const url = new URL(a.slug + "/", location.href).href;
+
+    const card = document.createElement("article");
+    card.className = "card";
+    card.style.animation = `fade .5s ${i * 60}ms both`;
+
+    const frame = document.createElement("div");
+    frame.className = "frame";
+    const iframe = document.createElement("iframe");
+    iframe.src = a.slug + "/";
+    iframe.loading = "lazy";
+    iframe.title = "Aperçu — " + a.title;
+    iframe.setAttribute("scrolling", "no");
+    iframe.setAttribute("tabindex", "-1");
+    iframe.setAttribute("aria-hidden", "true");
+    frame.appendChild(iframe);
+
+    const body = document.createElement("div");
+    body.className = "body";
+
+    const head = document.createElement("div");
+    head.className = "head";
+    head.innerHTML = `<h2>${a.title}</h2><span class="slug">/${a.slug}/</span>`;
+
+    const desc = document.createElement("p");
+    desc.className = "desc";
+    desc.textContent = a.desc;
+
+    const actions = document.createElement("div");
+    actions.className = "actions";
+
+    const open = document.createElement("a");
+    open.className = "btn primary";
+    open.href = a.slug + "/";
+    open.textContent = "Ouvrir";
+    open.target = "_blank";
+    open.rel = "noopener";
+
+    const copy = document.createElement("button");
+    copy.className = "btn";
+    copy.type = "button";
+    copy.textContent = "Copier le lien";
+    copy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch {
+        const t = document.createElement("textarea");
+        t.value = url; document.body.appendChild(t); t.select();
+        document.execCommand("copy"); t.remove();
+      }
+      copy.textContent = "Lien copié";
+      copy.classList.add("copied");
+      setTimeout(() => { copy.textContent = "Copier le lien"; copy.classList.remove("copied"); }, 1600);
+    });
+
+    actions.append(open, copy);
+    body.append(head, desc, actions);
+    card.append(frame, body);
+    grid.appendChild(card);
+  });
+
+  const style = document.createElement("style");
+  style.textContent = "@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}";
+  document.head.appendChild(style);
+</script>
 </body>
 </html>

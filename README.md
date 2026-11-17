@@ -1,19 +1,77 @@
-# ✨ Animations — T0b0i7
+# Animations — T0b0i7
 
-Collection de toutes mes animations. Chaque animation vit dans son sous-dossier avec sa propre GitHub Page :
+Collection d'animations web dans **un seul repo**, servies par **une seule GitHub Page**.
+Chaque animation possède son propre lien de prévisualisation (un sous-dossier = une URL).
 
-Base : `https://t0b0i7.github.io/animations/<dossier>/`
+**Hub :** `https://t0b0i7.github.io/animations/`
 
-## Liste
+> Si le repo est renommé, remplace `animations` dans les URLs ci-dessous.
+> Les liens du hub sont relatifs : ils continuent de fonctionner quel que soit le nom du repo.
 
-| Animation | Dossier | URL |
+## Liens de prévisualisation
+
+| Animation | Lien | Source |
 |---|---|---|
-| Chaddy Birthday | `chaddy-birthday/` | [voir](https://t0b0i7.github.io/animations/chaddy-birthday/) |
-| Christmas Tree 3D | `christmas-tree-3d/` | [voir](https://t0b0i7.github.io/animations/christmas-tree-3d/) |
-| Mes Animations (hub) | `mes-animations/` | [voir](https://t0b0i7.github.io/animations/mes-animations/) |
-| Saint Valentin 2026 | `saint-valentin-2026/` | [voir](https://t0b0i7.github.io/animations/saint-valentin-2026/) |
-| Toile d'Hiver | `toile-d-hiver/` | [voir](https://t0b0i7.github.io/animations/toile-d-hiver/) |
-| Anniversaries Animation | `anniversaries-animation/` | [voir](https://t0b0i7.github.io/animations/anniversaries-animation/) |
-| Peace Bloodness HBD | `peace-bloodness-hbd/` | [voir](https://t0b0i7.github.io/animations/peace-bloodness-hbd/) |
+| Galerie (hub) | [/animations/](https://t0b0i7.github.io/animations/) | `index.html` |
+| Carrousel 3D | [/animations/3d-animated-carousel/](https://t0b0i7.github.io/animations/3d-animated-carousel/) | `3d-animated-carousel/` |
+| Page 404 | [/animations/404-page-not-found/](https://t0b0i7.github.io/animations/404-page-not-found/) | `404-page-not-found/` |
+| Login animé | [/animations/animated-login-form/](https://t0b0i7.github.io/animations/animated-login-form/) | `animated-login-form/` |
+| Écrans d'authentification | [/animations/auth-screens/](https://t0b0i7.github.io/animations/auth-screens/) | `auth-screens/` |
+| Cadeau d'anniversaire | [/animations/birthday-gift-animation/](https://t0b0i7.github.io/animations/birthday-gift-animation/) | `birthday-gift-animation/` |
+| Carrousel | [/animations/carousel/](https://t0b0i7.github.io/animations/carousel/) | `carousel/` |
+| Lamp Login | [/animations/lamp-login/](https://t0b0i7.github.io/animations/lamp-login/) | `lamp-login/` (React + Vite) |
 
-Source migrée de : Mes_animations, Christmas-Tree-3D, Challenge_saint_valentin-2026, -toile-d-Hiver, Anniversaries_Animation, hbd-Pr-cieuse-1, gicoth-galaxy-celebration-hbd, peace-bloodness-hbd, ursulesowolabi-hbd
+## Structure
+
+```
+.
+├── index.html               # hub : cartes + aperçus live + copie de lien
+├── .nojekyll                # obligatoire : désactive Jekyll sur GitHub Pages
+├── .github/workflows/pages.yml
+├── 3d-animated-carousel/    # statique
+├── 404-page-not-found/      # statique
+├── animated-login-form/     # statique
+├── auth-screens/            # statique
+├── birthday-gift-animation/ # statique
+├── carousel/                # statique
+└── lamp-login/              # sources React + Vite (buildée par la CI)
+```
+
+## Ajouter une animation
+
+1. Créer un dossier en **kebab-case** avec un `index.html` à sa racine :
+   `mon-animation/index.html`.
+2. Ajouter l'entrée dans le tableau `animations` du `<script>` de `index.html`.
+3. Ajouter la ligne dans le tableau ci-dessus.
+4. Push sur `main` → déploiement automatique.
+
+Règles à respecter :
+
+- pas d'espaces ni de majuscules dans les noms de dossiers (URL encodées) ;
+- chemins **relatifs** dans le HTML (`./style.css`, pas `/style.css`) ;
+- si un projet a un build (Vite, webpack…), l'ajouter au workflow `pages.yml`.
+
+## Déploiement
+
+Le workflow `.github/workflows/pages.yml` :
+
+1. installe et builde `lamp-login` (`npm ci && npm run build`) ;
+2. assemble `_site/` = tous les dossiers statiques + `lamp-login/dist` dans `_site/lamp-login/` ;
+3. publie sur GitHub Pages.
+
+À faire une seule fois dans **Settings → Pages** : `Source = GitHub Actions`.
+
+### Build local
+
+```bash
+cd lamp-login
+npm ci
+npm run build     # génère lamp-login/dist
+```
+
+Le `base` Vite est relatif (`./`), donc le build fonctionne aussi bien dans un sous-dossier
+que déployé ailleurs. Pour forcer un chemin absolu :
+
+```bash
+VITE_BASE=/animations/lamp-login/ npm run build
+```
