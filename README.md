@@ -22,6 +22,8 @@ Chaque animation possède son propre lien de prévisualisation (un sous-dossier 
 | Break The Glass | [/animations/break-the-glass/](https://t0b0i7.github.io/animations/break-the-glass/) | `break-the-glass/` |
 | Cœur de cristal | [/animations/crystal-heart-animation/](https://t0b0i7.github.io/animations/crystal-heart-animation/) | `crystal-heart-animation/` |
 | Casque audio | [/animations/headphone-animation/](https://t0b0i7.github.io/animations/headphone-animation/) | `headphone-animation/` |
+| Lettre de Saint-Valentin | [/animations/valentine-letter-animation/](https://t0b0i7.github.io/animations/valentine-letter-animation/) | `valentine-letter-animation/` |
+| Love Letter | [/animations/proposal-letter/](https://t0b0i7.github.io/animations/proposal-letter/) | `proposal-letter/` |
 | Lamp Login | [/animations/lamp-login/](https://t0b0i7.github.io/animations/lamp-login/) | `lamp-login/` (React + Vite) |
 
 ## Structure
@@ -40,6 +42,8 @@ Chaque animation possède son propre lien de prévisualisation (un sous-dossier 
 ├── carousel/                # statique
 ├── crystal-heart-animation/ # statique (Three.js via CDN)
 ├── headphone-animation/     # statique
+├── valentine-letter-animation/ # statique
+├── proposal-letter/         # statique
 └── lamp-login/              # sources React + Vite (buildée par la CI)
 ```
 
