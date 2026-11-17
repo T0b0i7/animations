@@ -19,6 +19,9 @@ Chaque animation possède son propre lien de prévisualisation (un sous-dossier 
 | Écrans d'authentification | [/animations/auth-screens/](https://t0b0i7.github.io/animations/auth-screens/) | `auth-screens/` |
 | Cadeau d'anniversaire | [/animations/birthday-gift-animation/](https://t0b0i7.github.io/animations/birthday-gift-animation/) | `birthday-gift-animation/` |
 | Carrousel | [/animations/carousel/](https://t0b0i7.github.io/animations/carousel/) | `carousel/` |
+| Break The Glass | [/animations/break-the-glass/](https://t0b0i7.github.io/animations/break-the-glass/) | `break-the-glass/` |
+| Cœur de cristal | [/animations/crystal-heart-animation/](https://t0b0i7.github.io/animations/crystal-heart-animation/) | `crystal-heart-animation/` |
+| Casque audio | [/animations/headphone-animation/](https://t0b0i7.github.io/animations/headphone-animation/) | `headphone-animation/` |
 | Lamp Login | [/animations/lamp-login/](https://t0b0i7.github.io/animations/lamp-login/) | `lamp-login/` (React + Vite) |
 
 ## Structure
@@ -33,7 +36,10 @@ Chaque animation possède son propre lien de prévisualisation (un sous-dossier 
 ├── animated-login-form/     # statique
 ├── auth-screens/            # statique
 ├── birthday-gift-animation/ # statique
+├── break-the-glass/         # statique
 ├── carousel/                # statique
+├── crystal-heart-animation/ # statique (Three.js via CDN)
+├── headphone-animation/     # statique
 └── lamp-login/              # sources React + Vite (buildée par la CI)
 ```
 

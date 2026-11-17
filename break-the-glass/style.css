@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
+:root {
+  --brand-start: oklch(25% 0.01 240);
+  --brand-stop: oklch(15% 0.01 240);
+  --text-primary: #ffffff;
+  --glass-bg: rgba(0, 0, 0, 0.5);
+  --glass-bg-hover: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-hover: rgba(255, 255, 255, 0.28);
+  --shadow-primary: rgba(0, 0, 0, 0.6);
+  --transition-spring: 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-fast: 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background-color: #0c0c0e;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-size='52'%3E%F0%9F%94%A8%3C/text%3E%3C/svg%3E") 10 16, auto;
+}
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+#glass-svg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+#glass-svg circle {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.ui-controls {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+#reset {
+  font-family: "Inter", sans-serif;
+  color: var(--text-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+#reset::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0s;
+  pointer-events: none;
+}
+#reset::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.3) 60%, transparent);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+#reset:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05) inset, 0 10px 25px var(--shadow-primary), 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+#reset:hover::before {
+  transform: translateX(200%);
+  transition: transform var(--transition-spring);
+}
+#reset:hover::after {
+  opacity: 1;
+}
+#reset:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset, 0 2px 10px var(--shadow-primary);
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fadeInShard {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes flashOut {
+  to {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
+.tp-lblv {
+  grid-template-columns: 160px 1fr;
+}
+
+.tp-lblv_l {
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: unset;
+}
