@@ -44,6 +44,14 @@ jobs:
           npm ci
           npm run build
 
+      - name: Build 3d-shoe-finder (Next.js static export)
+        working-directory: 3d-shoe-finder
+        env:
+          NEXT_PUBLIC_BASE_PATH: /animations/3d-shoe-finder
+        run: |
+          npm ci
+          npm run build
+
       - name: Assemble site
         run: |
           mkdir -p _site
@@ -54,12 +62,16 @@ jobs:
             --exclude='lamp-login' \
             --exclude='interactive-birthday-gift' \
             --exclude='iron-man' \
+            --exclude='3d-shoe-finder' \
+            --exclude='3d_animated_carousel' \
+            --exclude='404_Page_Not_Found' \
             --exclude='_site' \
             ./ _site/
-          mkdir -p _site/lamp-login _site/interactive-birthday-gift _site/iron-man
+          mkdir -p _site/lamp-login _site/interactive-birthday-gift _site/iron-man _site/3d-shoe-finder
           cp -r lamp-login/dist/. _site/lamp-login/
           cp -r interactive-birthday-gift/dist/. _site/interactive-birthday-gift/
           cp -r iron-man/out/. _site/iron-man/
+          cp -r 3d-shoe-finder/out/. _site/3d-shoe-finder/
           touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3

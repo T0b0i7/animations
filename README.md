@@ -26,6 +26,15 @@ Chaque animation possède son propre lien de prévisualisation (un sous-dossier 
 | Love Letter | [/animations/proposal-letter/](https://t0b0i7.github.io/animations/proposal-letter/) | `proposal-letter/` |
 | Anniversaire interactif | [/animations/interactive-birthday-gift/](https://t0b0i7.github.io/animations/interactive-birthday-gift/) | `interactive-birthday-gift/` (Vite) |
 | Iron Man Mark LXXXV | [/animations/iron-man/](https://t0b0i7.github.io/animations/iron-man/) | `iron-man/` (Next.js export) |
+| Shoe Finder 3D | [/animations/3d-shoe-finder/](https://t0b0i7.github.io/animations/3d-shoe-finder/) | `3d-shoe-finder/` (Next.js export) |
+| Horloge moderne | [/animations/clock-modern-way/](https://t0b0i7.github.io/animations/clock-modern-way/) | `clock-modern-way/` |
+| Curseur dragon | [/animations/dragon-cursor-animation/](https://t0b0i7.github.io/animations/dragon-cursor-animation/) | `dragon-cursor-animation/` |
+| Réseau neuronal 3D | [/animations/neural-network/](https://t0b0i7.github.io/animations/neural-network/) | `neural-network/` |
+| Boucle infinie | [/animations/infinity-loop-loading/](https://t0b0i7.github.io/animations/infinity-loop-loading/) | `infinity-loop-loading/` |
+| Trou noir galactique | [/animations/galactic-black-hole/](https://t0b0i7.github.io/animations/galactic-black-hole/) | `galactic-black-hole/` |
+| Silly String | [/animations/silly-string/](https://t0b0i7.github.io/animations/silly-string/) | `silly-string/` |
+| Toaster Login | [/animations/toaster-login/](https://t0b0i7.github.io/animations/toaster-login/) | `toaster-login/` |
+| Cœur de cristal (variante) | [/animations/crystal-heart-animation-tcw/](https://t0b0i7.github.io/animations/crystal-heart-animation-tcw/) | `crystal-heart-animation-tcw/` |
 | Lamp Login | [/animations/lamp-login/](https://t0b0i7.github.io/animations/lamp-login/) | `lamp-login/` (React + Vite) |
 
 ## Structure
