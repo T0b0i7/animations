@@ -24,6 +24,8 @@ Chaque animation possède son propre lien de prévisualisation (un sous-dossier 
 | Casque audio | [/animations/headphone-animation/](https://t0b0i7.github.io/animations/headphone-animation/) | `headphone-animation/` |
 | Lettre de Saint-Valentin | [/animations/valentine-letter-animation/](https://t0b0i7.github.io/animations/valentine-letter-animation/) | `valentine-letter-animation/` |
 | Love Letter | [/animations/proposal-letter/](https://t0b0i7.github.io/animations/proposal-letter/) | `proposal-letter/` |
+| Anniversaire interactif | [/animations/interactive-birthday-gift/](https://t0b0i7.github.io/animations/interactive-birthday-gift/) | `interactive-birthday-gift/` (Vite) |
+| Iron Man Mark LXXXV | [/animations/iron-man/](https://t0b0i7.github.io/animations/iron-man/) | `iron-man/` (Next.js export) |
 | Lamp Login | [/animations/lamp-login/](https://t0b0i7.github.io/animations/lamp-login/) | `lamp-login/` (React + Vite) |
 
 ## Structure
@@ -44,6 +46,8 @@ Chaque animation possède son propre lien de prévisualisation (un sous-dossier 
 ├── headphone-animation/     # statique
 ├── valentine-letter-animation/ # statique
 ├── proposal-letter/         # statique
+├── interactive-birthday-gift/ # sources Vite (build CI -> dist)
+├── iron-man/                # sources Next.js (export statique CI -> out)
 └── lamp-login/              # sources React + Vite (buildée par la CI)
 ```
 

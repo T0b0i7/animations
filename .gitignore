@@ -5,6 +5,8 @@ node_modules/
 # Builds
 dist/
 .vite/
+.next/
+out/
 
 # Logs / OS
 npm-debug.log*

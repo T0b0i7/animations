@@ -23,11 +23,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: lamp-login/package-lock.json
 
       - name: Build lamp-login (React/Vite)
         working-directory: lamp-login
+        run: |
+          npm ci
+          npm run build
+
+      - name: Build interactive-birthday-gift (Vite)
+        working-directory: interactive-birthday-gift
+        run: |
+          npm ci
+          npm run build
+
+      - name: Build iron-man (Next.js static export)
+        working-directory: iron-man
+        env:
+          NEXT_PUBLIC_BASE_PATH: /animations/iron-man
         run: |
           npm ci
           npm run build
@@ -40,10 +52,14 @@ jobs:
             --exclude='.github' \
             --exclude='node_modules' \
             --exclude='lamp-login' \
+            --exclude='interactive-birthday-gift' \
+            --exclude='iron-man' \
             --exclude='_site' \
             ./ _site/
-          mkdir -p _site/lamp-login
+          mkdir -p _site/lamp-login _site/interactive-birthday-gift _site/iron-man
           cp -r lamp-login/dist/. _site/lamp-login/
+          cp -r interactive-birthday-gift/dist/. _site/interactive-birthday-gift/
+          cp -r iron-man/out/. _site/iron-man/
           touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
