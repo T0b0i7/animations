@@ -35,6 +35,7 @@ Chaque animation possède son propre lien de prévisualisation (un sous-dossier 
 | Silly String | [/animations/silly-string/](https://t0b0i7.github.io/animations/silly-string/) | `silly-string/` |
 | Toaster Login | [/animations/toaster-login/](https://t0b0i7.github.io/animations/toaster-login/) | `toaster-login/` |
 | Cœur de cristal (variante) | [/animations/crystal-heart-animation-tcw/](https://t0b0i7.github.io/animations/crystal-heart-animation-tcw/) | `crystal-heart-animation-tcw/` |
+| Digital Creatures | [/animations/digital-creatures/](https://t0b0i7.github.io/animations/digital-creatures/) | `digital-creatures/` |
 | Lamp Login | [/animations/lamp-login/](https://t0b0i7.github.io/animations/lamp-login/) | `lamp-login/` (React + Vite) |
 
 ## Structure
