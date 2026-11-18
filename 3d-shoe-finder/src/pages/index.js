@@ -13,7 +13,6 @@ export default function HomePage() {
         <title>Shoe Finder</title>
         <meta name="description" content="Explore our endless collection of sneakers" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <ShoeGrid />
     </>
