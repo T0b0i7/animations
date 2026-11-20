@@ -70,12 +70,6 @@
   .frame::after{
     content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,#0d0d13 100%);pointer-events:none;
   }
-  .frame .placeholder{
-    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
-    background:radial-gradient(120% 90% at 50% 0%,#1b1b2b,#08080d 70%);color:var(--muted);text-align:center;padding:16px;
-  }
-  .frame .placeholder span{font-size:13px;font-weight:600;color:var(--txt)}
-  .frame .placeholder small{font-size:11px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
 
   .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
   .head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
@@ -117,7 +111,7 @@
   const animations = [
     { slug: "3d-animated-carousel", title: "Carrousel 3D", desc: "Carrousel CSS 3D en rotation continue, 12 cartes en perspective." },
     { slug: "404-page-not-found",  title: "Page 404", desc: "Page d'erreur animée pour les routes introuvables." },
-    { slug: "animated-login-form", title: "Login animé", desc: "Embed Visme — le lecteur Visme ne sert plus le formulaire, la page s'ouvre mais reste vide.", noPreview: true },
+    { slug: "animated-login-form", title: "Login animé", desc: "Carte glassmorphism : mascotte dont les yeux suivent le curseur et se cachent pendant la saisie du mot de passe." },
     { slug: "auth-screens",        title: "Écrans d'authentification", desc: "Sign in / Sign up avec bascule animée entre les deux panneaux." },
     { slug: "birthday-gift-animation", title: "Cadeau d'anniversaire", desc: "Ouverture de cadeau, ballons et lettres animées." },
     { slug: "carousel",            title: "Carrousel", desc: "Carrousel d'images avec défilement fluide et contrôles." },
@@ -156,21 +150,14 @@
 
     const frame = document.createElement("div");
     frame.className = "frame";
-    if (a.noPreview) {
-      const ph = document.createElement("div");
-      ph.className = "placeholder";
-      ph.innerHTML = `<span>Aperçu indisponible</span><small>embed Visme hors service</small>`;
-      frame.appendChild(ph);
-    } else {
-      const iframe = document.createElement("iframe");
-      iframe.src = a.slug + "/";
-      iframe.loading = "lazy";
-      iframe.title = "Aperçu — " + a.title;
-      iframe.setAttribute("scrolling", "no");
-      iframe.setAttribute("tabindex", "-1");
-      iframe.setAttribute("aria-hidden", "true");
-      frame.appendChild(iframe);
-    }
+    const iframe = document.createElement("iframe");
+    iframe.src = a.slug + "/";
+    iframe.loading = "lazy";
+    iframe.title = "Aperçu — " + a.title;
+    iframe.setAttribute("scrolling", "no");
+    iframe.setAttribute("tabindex", "-1");
+    iframe.setAttribute("aria-hidden", "true");
+    frame.appendChild(iframe);
 
     const body = document.createElement("div");
     body.className = "body";

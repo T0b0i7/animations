@@ -1,51 +1,474 @@
-<!-- Note :- if the code is not run just open index.html into your broswer 
- and scroll on white screen using mouse and wait for 3 seconds.  you can 
- give the specific size to div for solve this problem or correct if on visme.co-->
-
-<!-- This form was created using Visme.co. You can design more forms 
- like this for free and embed them directly into your website! -->
-
-<!-- Just goto visme.co 
-do signup
-click on from/serveys 
-then choose template 
-then customize it like character movement  and all
-then click on publish you will get a embadding code which you can used
-for embadding the login form into your website for free -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, 
-    initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Animated Login Form</title>
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #f0f0f0;
+    :root {
+      --bg: #0b0f19;
+      --card: rgba(19, 24, 39, .72);
+      --stroke: rgba(255, 255, 255, .10);
+      --txt: #eef2ff;
+      --dim: #97a3bd;
+      --accent: #7c5cff;
+      --accent2: #22d3ee;
+      --ok: #34d399;
     }
 
-    div {
-      height: 200px;
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: var(--bg);
+      color: var(--txt);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    /* ---------- fond animé ---------- */
+    .bg { position: fixed; inset: 0; z-index: 0; filter: blur(70px); opacity: .75; }
+    .blob { position: absolute; border-radius: 50%; mix-blend-mode: screen; }
+    .b1 { width: 46vmax; height: 46vmax; left: -10vmax; top: -12vmax; background: #4c1d95; animation: drift1 18s ease-in-out infinite alternate; }
+    .b2 { width: 38vmax; height: 38vmax; right: -8vmax; bottom: -10vmax; background: #0e7490; animation: drift2 22s ease-in-out infinite alternate; }
+    .b3 { width: 26vmax; height: 26vmax; right: 22%; top: 12%; background: #be185d; opacity: .55; animation: drift3 15s ease-in-out infinite alternate; }
+
+    @keyframes drift1 { to { transform: translate3d(12vmax, 8vmax, 0) scale(1.18); } }
+    @keyframes drift2 { to { transform: translate3d(-10vmax, -9vmax, 0) scale(1.22); } }
+    @keyframes drift3 { to { transform: translate3d(-14vmax, 10vmax, 0) scale(.82); } }
+
+    /* ---------- carte ---------- */
+    .card {
+      position: relative;
+      z-index: 1;
+      width: min(400px, 100%);
+      padding: 34px 30px 30px;
+      border-radius: 26px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .8), inset 0 1px 0 rgba(255, 255, 255, .08);
+      backdrop-filter: blur(22px) saturate(140%);
+      animation: rise .7s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(26px) scale(.97); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ---------- mascotte ---------- */
+    .avatar {
+      width: 116px;
+      height: 116px;
+      margin: -74px auto 10px;
+      display: block;
+      filter: drop-shadow(0 14px 24px rgba(0, 0, 0, .55));
+    }
+
+    .avatar .lid { opacity: 0; transition: opacity .18s ease; }
+    .avatar .pupil { transition: transform .12s ease-out; }
+    .avatar .paw { transition: transform .28s cubic-bezier(.34, 1.56, .64, 1); }
+    .avatar.cover .lid { opacity: 1; }
+    .avatar.cover .pupil { opacity: 0; }
+    .avatar.cover .paw { transform: translateY(-17px); }
+
+    /* ---------- typo ---------- */
+    h1 {
+      margin: 6px 0 4px;
+      font-size: 23px;
+      letter-spacing: -.02em;
+      text-align: center;
+    }
+
+    .sub {
+      margin: 0 0 24px;
+      text-align: center;
+      font-size: 13.5px;
+      color: var(--dim);
+    }
+
+    /* ---------- champs ---------- */
+    .field {
+      position: relative;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .field input {
+      width: 100%;
+      height: 56px;
+      padding: 20px 16px 8px;
+      font: inherit;
+      font-size: 15px;
+      color: var(--txt);
+      background: rgba(255, 255, 255, .045);
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      outline: none;
+      transition: border-color .2s, background .2s, box-shadow .2s;
+    }
+
+    .field input:-webkit-autofill {
+      -webkit-text-fill-color: var(--txt);
+      transition: background-color 9999s ease-out;
+    }
+
+    .field label {
+      position: absolute;
+      left: 16px;
+      top: 18px;
+      font-size: 15px;
+      color: var(--dim);
+      pointer-events: none;
+      transform-origin: left top;
+      transition: transform .18s cubic-bezier(.2, .8, .2, 1), color .18s;
+    }
+
+    .field input:focus + label,
+    .field input:not(:placeholder-shown) + label {
+      transform: translateY(-9px) scale(.76);
+      color: var(--accent2);
+    }
+
+    .field input:focus {
+      border-color: rgba(124, 92, 255, .85);
+      background: rgba(124, 92, 255, .07);
+      box-shadow: 0 0 0 4px rgba(124, 92, 255, .16);
+    }
+
+    .field.invalid input {
+      border-color: #f87171;
+      box-shadow: 0 0 0 4px rgba(248, 113, 113, .14);
+      animation: shake .38s;
+    }
+
+    @keyframes shake {
+      25% { transform: translateX(-6px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-3px); }
+    }
+
+    .field.pass input { padding-right: 52px; }
+
+    .toggle {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--dim);
+      cursor: pointer;
+      transition: color .2s, background .2s;
+    }
+
+    .toggle:hover { color: var(--txt); background: rgba(255, 255, 255, .07); }
+    .toggle svg { width: 19px; height: 19px; }
+    .toggle .off { display: none; }
+    .toggle.shown .on { display: none; }
+    .toggle.shown .off { display: block; }
+
+    /* ---------- ligne options ---------- */
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 4px 0 20px;
+      font-size: 13px;
+    }
+
+    .check {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--dim);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .check input {
+      appearance: none;
+      width: 17px;
+      height: 17px;
+      margin: 0;
+      border: 1px solid var(--stroke);
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .05);
+      cursor: pointer;
+      transition: background .18s, border-color .18s;
+    }
+
+    .check input:checked {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-color: transparent;
+    }
+
+    .row a { color: var(--accent2); text-decoration: none; }
+    .row a:hover { text-decoration: underline; }
+
+    /* ---------- bouton ---------- */
+    .submit {
+      position: relative;
+      width: 100%;
+      height: 54px;
+      border: 0;
+      border-radius: 14px;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 650;
+      letter-spacing: .01em;
+      color: #fff;
+      cursor: pointer;
+      overflow: hidden;
+      background: linear-gradient(120deg, var(--accent), #4f46e5 45%, var(--accent2));
+      background-size: 180% 100%;
+      box-shadow: 0 14px 30px -12px rgba(124, 92, 255, .9);
+      transition: background-position .5s, transform .12s, box-shadow .2s;
+    }
+
+    .submit:hover { background-position: 100% 0; }
+    .submit:active { transform: scale(.985); }
+
+    .submit .label { transition: opacity .18s, transform .18s; display: inline-block; }
+
+    .submit::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, .42) 50%, transparent 80%);
+      transform: translateX(-130%);
+      animation: sheen 3.4s ease-in-out infinite;
+    }
+
+    @keyframes sheen { 0%, 55% { transform: translateX(-130%); } 90%, 100% { transform: translateX(130%); } }
+
+    .submit .spin {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 21px;
+      height: 21px;
+      border: 2.5px solid rgba(255, 255, 255, .35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      animation: rot .7s linear infinite;
+    }
+
+    @keyframes rot { to { transform: rotate(360deg); } }
+
+    .submit.loading { pointer-events: none; }
+    .submit.loading .label { opacity: 0; transform: translateY(6px); }
+    .submit.loading .spin { opacity: 1; }
+    .submit.loading::after { display: none; }
+
+    .submit.done {
+      background: linear-gradient(120deg, #059669, var(--ok));
+      box-shadow: 0 14px 30px -12px rgba(52, 211, 153, .85);
+    }
+
+    .submit.done .label { opacity: 1; transform: none; }
+
+    .hint {
+      margin: 16px 0 0;
+      text-align: center;
+      font-size: 11.5px;
+      color: #64748b;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- you will get embadding code like this -->
-  <div class="visme_d" data-title="Workshop Registration Form"
-    data-url="vm881x4j-workshop-registration-form?fullPage=true" data-domain="forms" data-full-page="true"
-    data-min-height="100vh" data-form-id="196598">
+  <div class="bg" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
   </div>
 
-  <script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></script>
+  <main class="card">
+    <svg class="avatar" id="avatar" viewBox="0 0 120 120" aria-hidden="true">
+      <defs>
+        <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f9a8d4" />
+          <stop offset="1" stop-color="#c084fc" />
+        </linearGradient>
+        <linearGradient id="fur2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#fbcfe8" />
+          <stop offset="1" stop-color="#d8b4fe" />
+        </linearGradient>
+      </defs>
+
+      <!-- corps / épaules -->
+      <path d="M22 120c0-19 17-30 38-30s38 11 38 30z" fill="url(#fur)" opacity=".92" />
+
+      <!-- oreilles -->
+      <path d="M30 40 26 14c-.5-3 2-5 4.5-3.5L51 27z" fill="url(#fur)" />
+      <path d="M90 40 94 14c.5-3-2-5-4.5-3.5L69 27z" fill="url(#fur)" />
+      <path d="M33 34 31 21l12 7z" fill="#f472b6" opacity=".75" />
+      <path d="M87 34 89 21 77 28z" fill="#f472b6" opacity=".75" />
+
+      <!-- tête -->
+      <ellipse cx="60" cy="52" rx="34" ry="31" fill="url(#fur2)" />
+      <ellipse cx="60" cy="60" rx="24" ry="18" fill="#fdf2f8" opacity=".55" />
+
+      <!-- yeux ouverts -->
+      <g class="pupil" id="pupilL">
+        <ellipse cx="47" cy="50" rx="6.4" ry="7.4" fill="#1e1b4b" />
+        <circle cx="45" cy="47.5" r="2.1" fill="#fff" />
+      </g>
+      <g class="pupil" id="pupilR">
+        <ellipse cx="73" cy="50" rx="6.4" ry="7.4" fill="#1e1b4b" />
+        <circle cx="71" cy="47.5" r="2.1" fill="#fff" />
+      </g>
+
+      <!-- yeux fermés -->
+      <g class="lid" stroke="#1e1b4b" stroke-width="2.6" stroke-linecap="round" fill="none">
+        <path d="M41 51q6 5 12 0" />
+        <path d="M67 51q6 5 12 0" />
+      </g>
+
+      <!-- nez + bouche -->
+      <path d="M57 62h6l-3 3.4z" fill="#f472b6" />
+      <path d="M53 68q7 6 14 0" stroke="#be185d" stroke-width="2.2" fill="none" stroke-linecap="round" />
+
+      <!-- pattes -->
+      <g class="paw" fill="url(#fur2)">
+        <ellipse cx="36" cy="76" rx="9" ry="7.5" />
+        <ellipse cx="84" cy="76" rx="9" ry="7.5" />
+      </g>
+    </svg>
+
+    <h1>Connexion</h1>
+    <p class="sub">Heureux de vous revoir 👋</p>
+
+    <form id="form" novalidate>
+      <div class="field" id="fUser">
+        <input id="user" type="text" placeholder=" " autocomplete="username" spellcheck="false">
+        <label for="user">Nom d'utilisateur</label>
+      </div>
+
+      <div class="field pass" id="fPass">
+        <input id="pass" type="password" placeholder=" " autocomplete="current-password">
+        <label for="pass">Mot de passe</label>
+        <button class="toggle" id="toggle" type="button" aria-label="Afficher le mot de passe">
+          <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+            <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+            <path d="M3 3l18 18" />
+            <path d="M10.6 6.2A9.9 9.9 0 0 1 12 6c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4.1M6.3 7.8A17 17 0 0 0 2 13s3.6 7 10 7a9.6 9.6 0 0 0 4-.9" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="row">
+        <label class="check"><input type="checkbox" id="remember"> Se souvenir de moi</label>
+        <a href="#" onclick="return false">Mot de passe oublié ?</a>
+      </div>
+
+      <button class="submit" id="submit" type="submit">
+        <span class="label">Se connecter</span>
+        <span class="spin"></span>
+      </button>
+
+      <p class="hint">démo — aucun identifiant n'est envoyé</p>
+    </form>
+  </main>
+
+  <script>
+    (() => {
+      const avatar = document.getElementById("avatar");
+      const pupilL = document.getElementById("pupilL");
+      const pupilR = document.getElementById("pupilR");
+      const user = document.getElementById("user");
+      const pass = document.getElementById("pass");
+      const fUser = document.getElementById("fUser");
+      const fPass = document.getElementById("fPass");
+      const toggle = document.getElementById("toggle");
+      const form = document.getElementById("form");
+      const submit = document.getElementById("submit");
+
+      /* --- les yeux suivent le curseur --- */
+      const MAX = 3.4;
+      window.addEventListener("pointermove", (e) => {
+        const r = avatar.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width / 2)) / (window.innerWidth / 2);
+        const dy = (e.clientY - (r.top + r.height / 2)) / (window.innerHeight / 2);
+        const x = Math.max(-1, Math.min(1, dx)) * MAX;
+        const y = Math.max(-1, Math.min(1, dy)) * MAX;
+        pupilL.style.transform = `translate(${x}px, ${y}px)`;
+        pupilR.style.transform = `translate(${x}px, ${y}px)`;
+      }, { passive: true });
+
+      /* --- la mascotte cache ses yeux sur le mot de passe --- */
+      pass.addEventListener("focus", () => avatar.classList.add("cover"));
+      pass.addEventListener("blur", () => avatar.classList.remove("cover"));
+
+      /* --- afficher / masquer le mot de passe --- */
+      toggle.addEventListener("click", () => {
+        const shown = pass.type === "text";
+        pass.type = shown ? "password" : "text";
+        toggle.classList.toggle("shown", !shown);
+        toggle.setAttribute("aria-label", shown ? "Afficher le mot de passe" : "Masquer le mot de passe");
+        pass.focus();
+      });
+
+      /* --- validation + états du bouton --- */
+      const fail = (el) => {
+        el.classList.add("invalid");
+        setTimeout(() => el.classList.remove("invalid"), 400);
+      };
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (submit.classList.contains("loading") || submit.classList.contains("done")) return;
+
+        let ok = true;
+        if (!user.value.trim()) { fail(fUser); ok = false; }
+        if (pass.value.length < 4) { fail(fPass); ok = false; }
+        if (!ok) return;
+
+        submit.classList.add("loading");
+        setTimeout(() => {
+          submit.classList.remove("loading");
+          submit.classList.add("done");
+          submit.querySelector(".label").textContent = "Connecté ✓";
+          if (document.getElementById("remember").checked) {
+            try { localStorage.setItem("demo-user", user.value.trim()); } catch (_) {}
+          }
+          setTimeout(() => {
+            submit.classList.remove("done");
+            submit.querySelector(".label").textContent = "Se connecter";
+          }, 2200);
+        }, 1300);
+      });
+
+      /* --- restauration du souvenir --- */
+      try {
+        const saved = localStorage.getItem("demo-user");
+        if (saved) { user.value = saved; document.getElementById("remember").checked = true; }
+      } catch (_) {}
+    })();
+  </script>
 </body>
 
 </html>
