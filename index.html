@@ -138,11 +138,13 @@
     { slug: "lamp-login",          title: "Lamp Login", desc: "Interface React + Vite : la lampe s'allume et révèle le formulaire." }
   ];
 
+  const REPO = "https://github.com/T0b0i7/animations/tree/main/";
   const grid = document.getElementById("grid");
   document.getElementById("count").textContent = animations.length;
 
   animations.forEach((a, i) => {
     const url = new URL(a.slug + "/", location.href).href;
+    const codeUrl = REPO + a.slug;
 
     const card = document.createElement("article");
     card.className = "card";
@@ -180,6 +182,13 @@
     open.target = "_blank";
     open.rel = "noopener";
 
+    const code = document.createElement("a");
+    code.className = "btn";
+    code.href = codeUrl;
+    code.textContent = "Code";
+    code.target = "_blank";
+    code.rel = "noopener";
+
     const copy = document.createElement("button");
     copy.className = "btn";
     copy.type = "button";
@@ -197,7 +206,7 @@
       setTimeout(() => { copy.textContent = "Copier le lien"; copy.classList.remove("copied"); }, 1600);
     });
 
-    actions.append(open, copy);
+    actions.append(open, code, copy);
     body.append(head, desc, actions);
     card.append(frame, body);
     grid.appendChild(card);

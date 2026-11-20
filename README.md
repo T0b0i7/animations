@@ -12,34 +12,34 @@ Chaque animation possède son propre lien de prévisualisation (un sous-dossier 
 
 | Animation | Lien | Source |
 |---|---|---|
-| Galerie (hub) | [/animations/](https://t0b0i7.github.io/animations/) | `index.html` |
-| Carrousel 3D | [/animations/3d-animated-carousel/](https://t0b0i7.github.io/animations/3d-animated-carousel/) | `3d-animated-carousel/` |
-| Page 404 | [/animations/404-page-not-found/](https://t0b0i7.github.io/animations/404-page-not-found/) | `404-page-not-found/` |
-| Login animé | [/animations/animated-login-form/](https://t0b0i7.github.io/animations/animated-login-form/) | `animated-login-form/` |
-| Écrans d'authentification | [/animations/auth-screens/](https://t0b0i7.github.io/animations/auth-screens/) | `auth-screens/` |
-| Cadeau d'anniversaire | [/animations/birthday-gift-animation/](https://t0b0i7.github.io/animations/birthday-gift-animation/) | `birthday-gift-animation/` |
-| Carrousel | [/animations/carousel/](https://t0b0i7.github.io/animations/carousel/) | `carousel/` |
-| Break The Glass | [/animations/break-the-glass/](https://t0b0i7.github.io/animations/break-the-glass/) | `break-the-glass/` |
-| Cœur de cristal | [/animations/crystal-heart-animation/](https://t0b0i7.github.io/animations/crystal-heart-animation/) | `crystal-heart-animation/` |
-| Casque audio | [/animations/headphone-animation/](https://t0b0i7.github.io/animations/headphone-animation/) | `headphone-animation/` |
-| Lettre de Saint-Valentin | [/animations/valentine-letter-animation/](https://t0b0i7.github.io/animations/valentine-letter-animation/) | `valentine-letter-animation/` |
-| Love Letter | [/animations/proposal-letter/](https://t0b0i7.github.io/animations/proposal-letter/) | `proposal-letter/` |
-| Anniversaire interactif | [/animations/interactive-birthday-gift/](https://t0b0i7.github.io/animations/interactive-birthday-gift/) | `interactive-birthday-gift/` (Vite) |
-| Iron Man Mark LXXXV | [/animations/iron-man/](https://t0b0i7.github.io/animations/iron-man/) | `iron-man/` (Next.js export) |
-| Shoe Finder 3D | [/animations/3d-shoe-finder/](https://t0b0i7.github.io/animations/3d-shoe-finder/) | `3d-shoe-finder/` (Next.js export) |
-| Horloge moderne | [/animations/clock-modern-way/](https://t0b0i7.github.io/animations/clock-modern-way/) | `clock-modern-way/` |
-| Curseur dragon | [/animations/dragon-cursor-animation/](https://t0b0i7.github.io/animations/dragon-cursor-animation/) | `dragon-cursor-animation/` |
-| Réseau neuronal 3D | [/animations/neural-network/](https://t0b0i7.github.io/animations/neural-network/) | `neural-network/` |
-| Boucle infinie | [/animations/infinity-loop-loading/](https://t0b0i7.github.io/animations/infinity-loop-loading/) | `infinity-loop-loading/` |
-| Trou noir galactique | [/animations/galactic-black-hole/](https://t0b0i7.github.io/animations/galactic-black-hole/) | `galactic-black-hole/` |
-| Silly String | [/animations/silly-string/](https://t0b0i7.github.io/animations/silly-string/) | `silly-string/` |
-| Toaster Login | [/animations/toaster-login/](https://t0b0i7.github.io/animations/toaster-login/) | `toaster-login/` |
-| Cœur de cristal (variante) | [/animations/crystal-heart-animation-tcw/](https://t0b0i7.github.io/animations/crystal-heart-animation-tcw/) | `crystal-heart-animation-tcw/` |
-| Digital Creatures | [/animations/digital-creatures/](https://t0b0i7.github.io/animations/digital-creatures/) | `digital-creatures/` |
-| Hexagones de particules | [/animations/hexagon-forming-particles/](https://t0b0i7.github.io/animations/hexagon-forming-particles/) | `hexagon-forming-particles/` |
-| Tableau périodique | [/animations/periodic-table-animation/](https://t0b0i7.github.io/animations/periodic-table-animation/) | `periodic-table-animation/` |
-| Araignée réaliste | [/animations/realistic-spider/](https://t0b0i7.github.io/animations/realistic-spider/) | `realistic-spider/` |
-| Lamp Login | [/animations/lamp-login/](https://t0b0i7.github.io/animations/lamp-login/) | `lamp-login/` (React + Vite) |
+| Galerie (hub) | [/animations/](https://t0b0i7.github.io/animations/) | [index.html](https://github.com/T0b0i7/animations/blob/main/index.html) |
+| Carrousel 3D | [/animations/3d-animated-carousel/](https://t0b0i7.github.io/animations/3d-animated-carousel/) | [3d-animated-carousel/](https://github.com/T0b0i7/animations/tree/main/3d-animated-carousel) |
+| Page 404 | [/animations/404-page-not-found/](https://t0b0i7.github.io/animations/404-page-not-found/) | [404-page-not-found/](https://github.com/T0b0i7/animations/tree/main/404-page-not-found) |
+| Login animé | [/animations/animated-login-form/](https://t0b0i7.github.io/animations/animated-login-form/) | [animated-login-form/](https://github.com/T0b0i7/animations/tree/main/animated-login-form) |
+| Écrans d'authentification | [/animations/auth-screens/](https://t0b0i7.github.io/animations/auth-screens/) | [auth-screens/](https://github.com/T0b0i7/animations/tree/main/auth-screens) |
+| Cadeau d'anniversaire | [/animations/birthday-gift-animation/](https://t0b0i7.github.io/animations/birthday-gift-animation/) | [birthday-gift-animation/](https://github.com/T0b0i7/animations/tree/main/birthday-gift-animation) |
+| Carrousel | [/animations/carousel/](https://t0b0i7.github.io/animations/carousel/) | [carousel/](https://github.com/T0b0i7/animations/tree/main/carousel) |
+| Break The Glass | [/animations/break-the-glass/](https://t0b0i7.github.io/animations/break-the-glass/) | [break-the-glass/](https://github.com/T0b0i7/animations/tree/main/break-the-glass) |
+| Cœur de cristal | [/animations/crystal-heart-animation/](https://t0b0i7.github.io/animations/crystal-heart-animation/) | [crystal-heart-animation/](https://github.com/T0b0i7/animations/tree/main/crystal-heart-animation) |
+| Casque audio | [/animations/headphone-animation/](https://t0b0i7.github.io/animations/headphone-animation/) | [headphone-animation/](https://github.com/T0b0i7/animations/tree/main/headphone-animation) |
+| Lettre de Saint-Valentin | [/animations/valentine-letter-animation/](https://t0b0i7.github.io/animations/valentine-letter-animation/) | [valentine-letter-animation/](https://github.com/T0b0i7/animations/tree/main/valentine-letter-animation) |
+| Love Letter | [/animations/proposal-letter/](https://t0b0i7.github.io/animations/proposal-letter/) | [proposal-letter/](https://github.com/T0b0i7/animations/tree/main/proposal-letter) |
+| Anniversaire interactif | [/animations/interactive-birthday-gift/](https://t0b0i7.github.io/animations/interactive-birthday-gift/) | [interactive-birthday-gift/](https://github.com/T0b0i7/animations/tree/main/interactive-birthday-gift) (Vite) |
+| Iron Man Mark LXXXV | [/animations/iron-man/](https://t0b0i7.github.io/animations/iron-man/) | [iron-man/](https://github.com/T0b0i7/animations/tree/main/iron-man) (Next.js export) |
+| Shoe Finder 3D | [/animations/3d-shoe-finder/](https://t0b0i7.github.io/animations/3d-shoe-finder/) | [3d-shoe-finder/](https://github.com/T0b0i7/animations/tree/main/3d-shoe-finder) (Next.js export) |
+| Horloge moderne | [/animations/clock-modern-way/](https://t0b0i7.github.io/animations/clock-modern-way/) | [clock-modern-way/](https://github.com/T0b0i7/animations/tree/main/clock-modern-way) |
+| Curseur dragon | [/animations/dragon-cursor-animation/](https://t0b0i7.github.io/animations/dragon-cursor-animation/) | [dragon-cursor-animation/](https://github.com/T0b0i7/animations/tree/main/dragon-cursor-animation) |
+| Réseau neuronal 3D | [/animations/neural-network/](https://t0b0i7.github.io/animations/neural-network/) | [neural-network/](https://github.com/T0b0i7/animations/tree/main/neural-network) |
+| Boucle infinie | [/animations/infinity-loop-loading/](https://t0b0i7.github.io/animations/infinity-loop-loading/) | [infinity-loop-loading/](https://github.com/T0b0i7/animations/tree/main/infinity-loop-loading) |
+| Trou noir galactique | [/animations/galactic-black-hole/](https://t0b0i7.github.io/animations/galactic-black-hole/) | [galactic-black-hole/](https://github.com/T0b0i7/animations/tree/main/galactic-black-hole) |
+| Silly String | [/animations/silly-string/](https://t0b0i7.github.io/animations/silly-string/) | [silly-string/](https://github.com/T0b0i7/animations/tree/main/silly-string) |
+| Toaster Login | [/animations/toaster-login/](https://t0b0i7.github.io/animations/toaster-login/) | [toaster-login/](https://github.com/T0b0i7/animations/tree/main/toaster-login) |
+| Cœur de cristal (variante) | [/animations/crystal-heart-animation-tcw/](https://t0b0i7.github.io/animations/crystal-heart-animation-tcw/) | [crystal-heart-animation-tcw/](https://github.com/T0b0i7/animations/tree/main/crystal-heart-animation-tcw) |
+| Digital Creatures | [/animations/digital-creatures/](https://t0b0i7.github.io/animations/digital-creatures/) | [digital-creatures/](https://github.com/T0b0i7/animations/tree/main/digital-creatures) |
+| Hexagones de particules | [/animations/hexagon-forming-particles/](https://t0b0i7.github.io/animations/hexagon-forming-particles/) | [hexagon-forming-particles/](https://github.com/T0b0i7/animations/tree/main/hexagon-forming-particles) |
+| Tableau périodique | [/animations/periodic-table-animation/](https://t0b0i7.github.io/animations/periodic-table-animation/) | [periodic-table-animation/](https://github.com/T0b0i7/animations/tree/main/periodic-table-animation) |
+| Araignée réaliste | [/animations/realistic-spider/](https://t0b0i7.github.io/animations/realistic-spider/) | [realistic-spider/](https://github.com/T0b0i7/animations/tree/main/realistic-spider) |
+| Lamp Login | [/animations/lamp-login/](https://t0b0i7.github.io/animations/lamp-login/) | [lamp-login/](https://github.com/T0b0i7/animations/tree/main/lamp-login) (React + Vite) |
 
 ## Structure
 
